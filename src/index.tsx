@@ -9,7 +9,8 @@ import reportWebVitals from './reportWebVitals';
 const globalStyle = css({
   body: {
     margin: '0px',
-    height: '100%',
+    height: '100vh',
+    width: '100vw,',
     fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 
     'Helvetica Neue', sans-serif`,
@@ -18,7 +19,8 @@ const globalStyle = css({
   },
   html: {
     margin: '0px',
-    height: '100%',
+    height: '100vh',
+    width: '100vw,',
     fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 
     'Helvetica Neue', sans-serif`,
