@@ -50,70 +50,70 @@ describe('calculator should render a keyboard', () => {
       const numberBtn = screen.getByRole('button', { name: /1/i });
       userEvent.click(numberBtn);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('1');
+      expect(display.innerHTML).toContain('1');
     });
 
     test('where a user can press 2', () => {
       const numberBtn = screen.getByRole('button', { name: /2/i });
       userEvent.click(numberBtn);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('2');
+      expect(display.innerHTML).toContain('2');
     });
 
     test('where a user can press 3', () => {
       const numberBtn = screen.getByRole('button', { name: /3/i });
       userEvent.click(numberBtn);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('3');
+      expect(display.innerHTML).toContain('3');
     });
 
     test('where a user can press 4', () => {
       const numberBtn = screen.getByRole('button', { name: /4/i });
       userEvent.click(numberBtn);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('4');
+      expect(display.innerHTML).toContain('4');
     });
 
     test('where a user can press 5', () => {
       const numberBtn = screen.getByRole('button', { name: /5/i });
       userEvent.click(numberBtn);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('5');
+      expect(display.innerHTML).toContain('5');
     });
 
     test('where a user can press 6', () => {
       const numberBtn = screen.getByRole('button', { name: /6/i });
       userEvent.click(numberBtn);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('6');
+      expect(display.innerHTML).toContain('6');
     });
 
     test('where a user can press 7', () => {
       const numberBtn = screen.getByRole('button', { name: /7/i });
       userEvent.click(numberBtn);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('7');
+      expect(display.innerHTML).toContain('7');
     });
 
     test('where a user can press 8', () => {
       const numberBtn = screen.getByRole('button', { name: /8/i });
       userEvent.click(numberBtn);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('8');
+      expect(display.innerHTML).toContain('8');
     });
 
     test('where a user can press 9', () => {
       const numberBtn = screen.getByRole('button', { name: /9/i });
       userEvent.click(numberBtn);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('9');
+      expect(display.innerHTML).toContain('9');
     });
 
     test('where a user can press 0', () => {
       const numberBtn = screen.getByRole('button', { name: /0/i });
       userEvent.click(numberBtn);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('0');
+      expect(display.innerHTML).toContain('0');
     });
 
     // eslint-disable-next-line max-len
@@ -123,7 +123,7 @@ describe('calculator should render a keyboard', () => {
         userEvent.click(numberBtn);
       }
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('0');
+      expect(display.innerHTML).toContain('0');
     });
 
     test("where a user can't enter more than 8 digits", () => {
@@ -134,104 +134,104 @@ describe('calculator should render a keyboard', () => {
       const twoBtn = screen.getByRole('button', { name: /2/i });
       userEvent.click(twoBtn);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('11111111');
+      expect(display.innerHTML).toContain('11111111');
     });
   });
 
   describe('with operator buttons', () => {
     test('where a user can press +', () => {
-      const operator = screen.getByRole('button', { name: /\+/i });
+      const operator = screen.getByRole('button', { name: '+' });
       userEvent.click(operator);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('0+');
+      expect(display.innerHTML).toContain('0+');
     });
 
     test('where a user can press -', () => {
-      const operator = screen.getByRole('button', { name: /-/i });
+      const operator = screen.getByRole('button', { name: '-' });
       userEvent.click(operator);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('0+');
+      expect(display.innerHTML).toContain('0+');
     });
 
     test('where a user can press /', () => {
-      const operator = screen.getByRole('button', { name: /\//i });
+      const operator = screen.getByRole('button', { name: '/' });
       userEvent.click(operator);
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('0+');
+      expect(display.innerHTML).toContain('0+');
     });
 
     test('where a user can press =', () => {
       const one = screen.getByRole('button', { name: /1/i });
-      const equal = screen.getByRole('button', { name: /=/i });
+      const equal = screen.getByRole('button', { name: '=' });
 
       userEvent.click(one);
       userEvent.click(one);
       userEvent.click(equal);
 
       const display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('2');
+      expect(display.innerHTML).toContain('2');
     });
   });
 
   describe('with clear buttons', () => {
     test('where a user can press C', () => {
       const one = screen.getByRole('button', { name: /1/i });
-      const operator = screen.getByRole('button', { name: /\+/i });
-      const clear = screen.getByRole('button', { name: /C/i });
+      const operator = screen.getByRole('button', { name: '+' });
+      const clear = screen.getByRole('button', { name: 'C' });
 
       userEvent.click(one);
       let display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('1');
+      expect(display.innerHTML).toContain('1');
 
       userEvent.click(clear);
       display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('0');
+      expect(display.innerHTML).toContain('0');
 
       userEvent.click(one);
       userEvent.click(operator);
       display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('1+');
+      expect(display.innerHTML).toContain('1+');
 
       userEvent.click(clear);
       display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('1');
+      expect(display.innerHTML).toContain('1');
     });
 
     test('where a user can press AC', () => {
       const one = screen.getByRole('button', { name: /1/i });
-      const operator = screen.getByRole('button', { name: /\+/i });
-      const clear = screen.getByRole('button', { name: /C/i });
+      const operator = screen.getByRole('button', { name: '+' });
+      const clear = screen.getByRole('button', { name: 'AC' });
 
       userEvent.click(one);
       userEvent.click(operator);
       let display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('1+');
+      expect(display.innerHTML).toContain('1+');
 
       userEvent.click(clear);
       display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('0');
+      expect(display.innerHTML).toContain('0');
     });
   });
 
   describe('with postive/negative buttons', () => {
     test('where a user can press +/-', () => {
       const one = screen.getByRole('button', { name: /1/i });
-      const posneg = screen.getByRole('button', { name: /\+\/-/i });
+      const posneg = screen.getByRole('button', { name: '+/-' });
 
       userEvent.click(posneg);
       let display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('0');
+      expect(display.innerHTML).toContain('0');
 
       userEvent.click(one);
       userEvent.click(posneg);
       display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('-1');
+      expect(display.innerHTML).toContain('-1');
     });
   });
 
   describe('with decminal button', () => {
     test('where a user can press .', () => {
-      const decimal = screen.getByRole('button', { name: /./i });
+      const decimal = screen.getByRole('button', { name: /\./i });
       const numberBtn = screen.getByRole('button', { name: /0/i });
 
       userEvent.click(decimal);
@@ -240,10 +240,11 @@ describe('calculator should render a keyboard', () => {
       }
 
       let display = screen.getByTestId('Display');
-      expect(display).toHaveDisplayValue('0.000');
+      expect(display.innerHTML).toContain('0.000');
 
       userEvent.click(numberBtn);
-      display = screen.getByTestId('0.000');
+      display = screen.getByTestId('Display');
+      expect(display.innerHTML).toContain('0.000');
     });
   });
 });
