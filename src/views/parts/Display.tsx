@@ -12,7 +12,7 @@ interface DisplayProps {
 }
 
 const Display = ({ results = 0 }: DisplayProps): JSX.Element => {
-  return <DisplayContainer>{results}</DisplayContainer>;
+  return <DisplayContainer data-testid="Display">{results}</DisplayContainer>;
 };
 
 Display.defaultProps = {
