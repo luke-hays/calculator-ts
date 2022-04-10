@@ -8,7 +8,7 @@ import Calculator from './Calculator';
 
 describe('calculator should render a display port', () => {
   test('that initally displays 0', () => {
-    render(<Display results={0} />);
+    render(<Display display="0" />);
 
     const display = screen.getByText(/0/i);
 
@@ -16,7 +16,7 @@ describe('calculator should render a display port', () => {
   });
 
   test('that can display a range of 1-8 digit numbers', () => {
-    render(<Display results={12345678} />);
+    render(<Display display="12345678" />);
 
     const display = screen.getByText(/12345678/i);
 
@@ -24,7 +24,7 @@ describe('calculator should render a display port', () => {
   });
 
   test('that can display a range of 1-3 decimal numbers', () => {
-    render(<Display results={12345678.321} />);
+    render(<Display display="12345678.321" />);
 
     const display = screen.getByText(/12345678.321/i);
 
@@ -32,7 +32,7 @@ describe('calculator should render a display port', () => {
   });
 
   test('that wont display a 0 floating pt value', () => {
-    render(<Display results={12345678.0} />);
+    render(<Display display="12345678.0" />);
 
     const display = screen.getByText(/12345678/i);
 
@@ -199,13 +199,13 @@ describe('calculator should render a keyboard', () => {
 
     test('where a user can press AC', () => {
       const one = screen.getByRole('button', { name: /1/i });
-      const operator = screen.getByRole('button', { name: '+' });
       const clear = screen.getByRole('button', { name: 'AC' });
 
       userEvent.click(one);
-      userEvent.click(operator);
+      userEvent.click(one);
+      userEvent.click(one);
       let display = screen.getByTestId('Display');
-      expect(display.innerHTML).toContain('1+');
+      expect(display.innerHTML).toContain('111');
 
       userEvent.click(clear);
       display = screen.getByTestId('Display');

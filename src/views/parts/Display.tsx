@@ -8,15 +8,15 @@ const DisplayContainer = styled(Box)({
 });
 
 interface DisplayProps {
-  results?: number;
+  display?: string;
 }
 
-const Display = ({ results = 0 }: DisplayProps): JSX.Element => {
-  return <DisplayContainer data-testid="Display">{results}</DisplayContainer>;
+const Display = ({ display = '0' }: DisplayProps): JSX.Element => {
+  return <DisplayContainer data-testid="Display">{display}</DisplayContainer>;
 };
 
 Display.defaultProps = {
-  results: 0,
+  display: '0',
 };
 
 export default Display;
