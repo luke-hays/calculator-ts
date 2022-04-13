@@ -6,7 +6,7 @@ import Display from './parts/Display';
 import Keypad from './parts/Keypad';
 
 const MAX_DIGIT_LENGTH = 8;
-const MAX_DECIMAL_LENGTH = 3;
+// const MAX_DECIMAL_LENGTH = 3;
 
 const CalculatorContainer = styled(Box)({
   backgroundColor: 'blue',
@@ -16,6 +16,8 @@ const CalculatorContainer = styled(Box)({
 const Calculator = (): JSX.Element => {
   const [display, setDisplay] = useState('0');
   const [currentVal, setCurrentVal] = useState(0);
+  const [equationStack, setEquationStack] = useState<string[]>([]);
+  const [isFirst, setIsFirst] = useState(true);
 
   const keypadPress = (e: React.MouseEvent<HTMLButtonElement>): void => {
     const n = e.currentTarget.value;
@@ -32,13 +34,18 @@ const Calculator = (): JSX.Element => {
       case '9':
       case '0': {
         // Ignore the value if greater than digit length
-        // Ignore the value if adding zeros
+        // Ignore the value if adding zeros to zero
         const num = parseInt(n, 10);
 
         if (currentVal.toString().length >= MAX_DIGIT_LENGTH) break;
         if (currentVal === 0) {
           if (num !== 0) {
-            setDisplay(n);
+            if (isFirst) {
+              setIsFirst(false);
+              setDisplay(n);
+            } else {
+              setDisplay(display + n);
+            }
             setCurrentVal(num);
           }
         } else {
@@ -50,22 +57,89 @@ const Calculator = (): JSX.Element => {
       case '+':
       case '-':
       case '/':
+        // Push our currentValue onto the stack
+        equationStack.push(currentVal.toString());
+        // Push the operator onto the stack
+        equationStack.push(n);
+        // Update the display
+        setDisplay(display + n);
+        // Set the current Vlue
+        setCurrentVal(0);
         break;
-      case '=':
+      case '=': {
+        if (currentVal !== 0) {
+          equationStack.push(currentVal.toString());
+        }
+
+        let token = '';
+        let lastVal = '';
+
+        for (let i = 0; i < equationStack.length; i += 1) {
+          const element = equationStack[i];
+
+          if (Number.isInteger(Number.parseInt(element, 10))) {
+            if (!lastVal) {
+              lastVal = element;
+            } else if (!token) {
+              setDisplay('Err: No operator');
+              break;
+            } else {
+              switch (token) {
+                case '+':
+                  lastVal = (
+                    Number.parseInt(lastVal, 10) + Number.parseInt(element, 10)
+                  ).toString();
+                  break;
+                case '-':
+                  lastVal = (
+                    Number.parseInt(lastVal, 10) - Number.parseInt(element, 10)
+                  ).toString();
+                  break;
+                case '/':
+                  lastVal = (
+                    Number.parseInt(lastVal, 10) / Number.parseInt(element, 10)
+                  ).toString();
+                  break;
+                default:
+                  break;
+              }
+              token = '';
+            }
+          } else if (!token) {
+            token = element;
+          } else {
+            setDisplay('Err: Invalid equation');
+            break;
+          }
+        }
+
+        setCurrentVal(Number.parseInt(lastVal, 10));
+        setDisplay(lastVal);
+        setEquationStack([]);
         break;
+      }
       case 'C': {
         if (display === '0') break;
 
         const newDisplay = display.slice(0, display.length - 1);
-        if (newDisplay.length === 0) setDisplay('0');
-        else setDisplay(newDisplay);
+        if (newDisplay.length === 0) {
+          setDisplay('0');
+          setIsFirst(true);
+        } else setDisplay(newDisplay);
 
-        setCurrentVal(currentVal / 10);
+        const lastVal = equationStack.pop();
+        if (Number.isInteger(lastVal)) {
+          const newVal = currentVal / 10;
+          setCurrentVal(newVal);
+          equationStack.push(newVal.toString());
+        }
         break;
       }
       case 'AC':
         setDisplay('0');
         setCurrentVal(0);
+        setEquationStack([]);
+        setIsFirst(true);
         break;
       case '+/-':
         break;
