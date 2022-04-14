@@ -1,3 +1,7 @@
+import styled from '@emotion/styled';
+import Box from 'components/Box';
+import Button from 'components/Button';
+
 const keys = {
   one: 1,
   two: 2,
@@ -23,64 +27,71 @@ interface KeypadProps {
   keypadPress: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
+const KeypadContainer = styled(Box)({
+  backgroundColor: 'purple',
+  width: 'auto',
+  height: '200px',
+  margin: '5px',
+});
+
 const Keypad = ({ keypadPress }: KeypadProps): JSX.Element => {
   return (
-    <>
-      <button type="button" onClick={keypadPress} value={keys.one}>
+    <KeypadContainer>
+      <Button type="button" onClick={keypadPress} value={keys.one}>
         {keys.one}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.two}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.two}>
         {keys.two}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.three}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.three}>
         {keys.three}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.four}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.four}>
         {keys.four}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.five}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.five}>
         {keys.five}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.six}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.six}>
         {keys.six}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.seven}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.seven}>
         {keys.seven}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.eight}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.eight}>
         {keys.eight}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.nine}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.nine}>
         {keys.nine}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.zero}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.zero}>
         {keys.zero}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.plus}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.plus}>
         {keys.plus}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.minus}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.minus}>
         {keys.minus}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.divide}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.divide}>
         {keys.divide}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.equal}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.equal}>
         {keys.equal}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.clear}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.clear}>
         {keys.clear}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.allClear}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.allClear}>
         {keys.allClear}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.posneg}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.posneg}>
         {keys.posneg}
-      </button>
-      <button type="button" onClick={keypadPress} value={keys.decimal}>
+      </Button>
+      <Button type="button" onClick={keypadPress} value={keys.decimal}>
         {keys.decimal}
-      </button>
-    </>
+      </Button>
+    </KeypadContainer>
   );
 };
 

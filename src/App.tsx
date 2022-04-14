@@ -31,7 +31,7 @@ const App = (): JSX.Element => {
     <Body>
       <Header>
         <HeaderText>
-          <h1>CRA Template</h1>
+          <h1>TS Calculator App</h1>
         </HeaderText>
       </Header>
       <Calculator />

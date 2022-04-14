@@ -8,9 +8,17 @@ import Keypad from './parts/Keypad';
 const MAX_DIGIT_LENGTH = 8;
 // const MAX_DECIMAL_LENGTH = 3;
 
-const CalculatorContainer = styled(Box)({
+const CalculatorFeatures = styled(Box)({
   backgroundColor: 'blue',
-  height: '400px',
+  height: '500px',
+  width: '300px',
+});
+
+const CalculatorContainer = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
 });
 
 const Calculator = (): JSX.Element => {
@@ -151,13 +159,13 @@ const Calculator = (): JSX.Element => {
   };
 
   return (
-    <>
+    <CalculatorContainer>
       <h1>Calculator</h1>
-      <CalculatorContainer>
+      <CalculatorFeatures>
         <Display display={display} />
         <Keypad keypadPress={keypadPress} />
-      </CalculatorContainer>
-    </>
+      </CalculatorFeatures>
+    </CalculatorContainer>
   );
 };
 

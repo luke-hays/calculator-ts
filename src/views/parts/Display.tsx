@@ -3,7 +3,8 @@ import Box from 'components/Box';
 
 const DisplayContainer = styled(Box)({
   height: '50px',
-  width: '100px',
+  width: 'auto',
+  margin: '5px',
   backgroundColor: 'red',
 });
 
