@@ -10,7 +10,7 @@ const MAX_DIGIT_LENGTH = 8;
 
 const CalculatorFeatures = styled(Box)({
   backgroundColor: 'blue',
-  height: '500px',
+  height: '350px',
   width: '300px',
 });
 
@@ -43,6 +43,7 @@ const Calculator = (): JSX.Element => {
       case '0': {
         // Ignore the value if greater than digit length
         // Ignore the value if adding zeros to zero
+        // Bug with entering zero
         const num = parseInt(n, 10);
 
         if (currentVal.toString().length >= MAX_DIGIT_LENGTH) break;

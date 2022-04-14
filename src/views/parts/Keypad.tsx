@@ -32,65 +32,74 @@ const KeypadContainer = styled(Box)({
   width: 'auto',
   height: '200px',
   margin: '5px',
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr 1fr',
+});
+
+const KeypadButton = styled(Button)({
+  margin: '0 auto',
+  height: '-webkit-fill-available',
+  width: '-webkit-fill-available',
+  border: '1px solid black',
 });
 
 const Keypad = ({ keypadPress }: KeypadProps): JSX.Element => {
   return (
     <KeypadContainer>
-      <Button type="button" onClick={keypadPress} value={keys.one}>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.one}>
         {keys.one}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.two}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.two}>
         {keys.two}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.three}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.three}>
         {keys.three}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.four}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.four}>
         {keys.four}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.five}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.five}>
         {keys.five}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.six}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.six}>
         {keys.six}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.seven}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.seven}>
         {keys.seven}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.eight}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.eight}>
         {keys.eight}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.nine}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.nine}>
         {keys.nine}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.zero}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.zero}>
         {keys.zero}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.plus}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.plus}>
         {keys.plus}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.minus}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.minus}>
         {keys.minus}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.divide}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.divide}>
         {keys.divide}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.equal}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.equal}>
         {keys.equal}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.clear}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.clear}>
         {keys.clear}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.allClear}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.allClear}>
         {keys.allClear}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.posneg}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.posneg}>
         {keys.posneg}
-      </Button>
-      <Button type="button" onClick={keypadPress} value={keys.decimal}>
+      </KeypadButton>
+      <KeypadButton type="button" onClick={keypadPress} value={keys.decimal}>
         {keys.decimal}
-      </Button>
+      </KeypadButton>
     </KeypadContainer>
   );
 };
