@@ -18,7 +18,6 @@ const useCalculator = (): {
     }
   }, [equationStack]);
 
-  // A lot of repeated instances of getting equationstack
   const itemAction = (equation: EquationStack, n: string): void => {
     equation.push(n);
     setEquationStack(equation);
