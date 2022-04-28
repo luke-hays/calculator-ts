@@ -143,21 +143,21 @@ describe('calculator should render a keyboard', () => {
       const operator = screen.getByRole('button', { name: '+' });
       userEvent.click(operator);
       const display = screen.getByTestId('Display');
-      expect(display.innerHTML).toContain('0+');
+      expect(display.innerHTML).toContain('0 +');
     });
 
     test('where a user can press -', () => {
       const operator = screen.getByRole('button', { name: '-' });
       userEvent.click(operator);
       const display = screen.getByTestId('Display');
-      expect(display.innerHTML).toContain('0-');
+      expect(display.innerHTML).toContain('0 -');
     });
 
     test('where a user can press /', () => {
       const operator = screen.getByRole('button', { name: '/' });
       userEvent.click(operator);
       const display = screen.getByTestId('Display');
-      expect(display.innerHTML).toContain('0/');
+      expect(display.innerHTML).toContain('0 /');
     });
 
     test('where a user can press =', () => {
@@ -192,7 +192,7 @@ describe('calculator should render a keyboard', () => {
       userEvent.click(one);
       userEvent.click(operator);
       display = screen.getByTestId('Display');
-      expect(display.innerHTML).toContain('1+');
+      expect(display.innerHTML).toContain('1 +');
 
       userEvent.click(clear);
       display = screen.getByTestId('Display');

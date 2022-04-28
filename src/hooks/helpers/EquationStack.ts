@@ -25,7 +25,10 @@ class EquationStack {
         // If token is number and won't surpass max length
         // concat to token and push back on stack
         if (NumberLib.isNumber(token)) {
-          if (token.length >= this.MAX_DIGIT_LENGTH) return;
+          if (token.length >= this.MAX_DIGIT_LENGTH) {
+            this.equation.push(token);
+            return;
+          }
           token += item;
           this.equation.push(token);
         } else {
